@@ -1,7 +1,4 @@
-const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-const apiUrl = 'https://ipapi.co/json/';
-
-fetch(proxyUrl + apiUrl)
+fetch('https://api.ipgeolocation.io/ipgeo?apiKey=YOUR_API_KEY')
     .then(response => response.json())
     .then(data => {
         document.getElementById('country').textContent = data.country_name || 'Unavailable';
