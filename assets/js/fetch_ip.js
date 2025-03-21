@@ -1,4 +1,8 @@
-fetch('https://api.ipgeolocation.io/ipgeo?apiKey=YOUR_API_KEY')
+// Use a proxy to bypass CORS issues
+const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+const apiUrl = 'https://ipapi.co/json/';
+
+fetch(proxyUrl + apiUrl)
     .then(response => response.json())
     .then(data => {
         document.getElementById('country').textContent = data.country_name || 'Unavailable';
