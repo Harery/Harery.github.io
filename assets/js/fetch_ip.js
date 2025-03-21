@@ -1,7 +1,10 @@
-fetch('https://ipinfo.io/json?token=YOUR_API_KEY') // Replace YOUR_API_KEY with your ipinfo.io API key
+const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+const apiUrl = 'https://ipapi.co/json/';
+
+fetch(proxyUrl + apiUrl)
     .then(response => response.json())
     .then(data => {
-        document.getElementById('country').textContent = data.country || 'Unavailable';
+        document.getElementById('country').textContent = data.country_name || 'Unavailable';
         document.getElementById('ip').textContent = data.ip || 'Unavailable';
 
         // Extract operating system details
