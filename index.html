@@ -26,24 +26,28 @@
             <h2>Latest Projects</h2>
             <p>Check out my latest projects and contributions to open source.</p>
         </section>
+        <section>
+            <h2>Your Location</h2>
+            <p>Your IP Address: <span id="ip">Loading...</span></p>
+            <p>Your Country: <span id="country">Loading...</span></p>
+        </section>
     </main>
     <footer>
         <p>&copy; 2023 My Personal Website</p>
     </footer>
     <script src="assets/js/scripts.js"></script>
-
-    fetch('https://api.ipify.org?format=json')
-    .then(response => response.json())
-    .then(data => {
-      const ipAddress = data.ip;
-      return fetch(`https://ipapi.co/${ipAddress}/json/`);
-    })
-    .then(response => response.json())
-    .then(data => {
-      document.getElementById('country').textContent = data.country_name;
-      document.getElementById('ip').textContent = data.ip;
-    });
-  
-    
+    <script>
+        fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+          const ipAddress = data.ip;
+          return fetch(`https://ipapi.co/${ipAddress}/json/`);
+        })
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('country').textContent = data.country_name;
+          document.getElementById('ip').textContent = data.ip;
+        });
+    </script>
 </body>
 </html>
