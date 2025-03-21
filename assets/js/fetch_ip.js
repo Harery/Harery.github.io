@@ -1,4 +1,4 @@
-// Use a proxy to bypass CORS issues
+// Use CORS Anywhere proxy to bypass CORS issues
 const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 const apiUrl = 'https://ipapi.co/json/';
 
