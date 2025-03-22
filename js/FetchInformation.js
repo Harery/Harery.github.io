@@ -11,11 +11,15 @@ function fetchAndDisplayIPs() {
             document.getElementById('ipv4').textContent = 'Unable to fetch IPv4 address.';
         });
 
-    // Fetch IPv6 address
-    fetch('https://api64.ipify.org?format=json')
+    // Fetch IPv6 address using an alternative API
+    fetch('https://ipwhois.app/json/')
         .then(response => response.json())
         .then(data => {
-            document.getElementById('ipv6').textContent = data.ip;
+            if (data.ipv6) {
+                document.getElementById('ipv6').textContent = data.ipv6;
+            } else {
+                document.getElementById('ipv6').textContent = 'IPv6 not available.';
+            }
         })
         .catch(error => {
             console.error('Error fetching IPv6 address:', error);
