@@ -1,22 +1,24 @@
 <script>
-    async function checkProxy() {
-      try {
-        const API_URL = 'https://[your-vercel-domain]/api/detect-proxy';
-        const response = await fetch(API_URL);
-        const result = await response.json();
-        
-        const resultDiv = document.getElementById('result');
-        if (result.isProxy) {
-          resultDiv.textContent = "⚠️ VPN/Proxy detected!";
-        } else {
-          resultDiv.textContent = "✅ No VPN/Proxy detected";
-        }
-      } catch (error) {
-        console.error("Error:", error);
-        resultDiv.textContent = "❌ Detection failed";
-      }
-    }
+  async function checkProxy() {
+    const resultDiv = document.getElementById('result');
     
-    // Run when page loads
-    window.addEventListener('load', checkProxy);
-    </script>
+    try {
+      // Replace with your ACTUAL Vercel URL (no brackets!)
+      const API_URL = 'https://your-real-domain.vercel.app/api/detect-proxy';
+      
+      const response = await fetch(API_URL);
+      const result = await response.json();
+      
+      if (result.isProxy) {
+        resultDiv.textContent = "⚠️ VPN/Proxy detected!";
+      } else {
+        resultDiv.textContent = "✅ No VPN/Proxy detected";
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      resultDiv.textContent = "❌ Detection failed";
+    }
+  }
+  
+  window.addEventListener('load', checkProxy);
+  </script>
