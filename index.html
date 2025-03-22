@@ -42,5 +42,23 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- Include your custom JavaScript -->
     <script src="js/FetchInformation.js"></script>
+    <script>
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const { latitude, longitude } = position.coords;
+                    console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+                    document.getElementById('region').textContent = `Lat: ${latitude}, Long: ${longitude}`;
+                },
+                (error) => {
+                    console.error('Error using Geolocation API:', error);
+                    document.getElementById('region').textContent = 'Geolocation not available.';
+                }
+            );
+        } else {
+            console.error('Geolocation API not supported by this browser.');
+            document.getElementById('region').textContent = 'Geolocation not supported.';
+        }
+    </script>
 </body>
 </html>
