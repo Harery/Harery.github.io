@@ -1,20 +1,23 @@
+// Your API key from ipgeolocation.io
+const API_KEY = 'f62b34706e9d41e2a13b35d921588aee';
+
 // Function to fetch and display IP and geolocation information using Axios
 function fetchAndDisplayInfo() {
     console.log('Fetching IP and geolocation information using Axios...');
 
     // Fetch IP and geolocation information
-    axios.get('http://ip-api.com/json/')
+    axios.get(`https://api.ipgeolocation.io/ipgeo?apiKey=${API_KEY}`)
         .then(response => {
             const data = response.data;
 
             // Display geolocation and ISP details
-            document.getElementById('region').textContent = data.regionName || 'Region not available';
+            document.getElementById('region').textContent = data.state_prov || 'Region not available';
             document.getElementById('city').textContent = data.city || 'City not available';
-            document.getElementById('zip').textContent = data.zip || 'ZIP not available';
-            document.getElementById('timezone').textContent = data.timezone || 'Timezone not available';
+            document.getElementById('zip').textContent = data.zipcode || 'ZIP not available';
+            document.getElementById('timezone').textContent = data.time_zone.name || 'Timezone not available';
             document.getElementById('isp').textContent = data.isp || 'ISP not available';
-            document.getElementById('organization').textContent = data.org || 'Organization not available';
-            document.getElementById('asn').textContent = `${data.as || 'AS number not available'}`;
+            document.getElementById('organization').textContent = data.organization || 'Organization not available';
+            document.getElementById('asn').textContent = data.asn || 'AS number not available';
 
             // Display user agent
             document.getElementById('user-agent').textContent = navigator.userAgent || 'User agent not available';
