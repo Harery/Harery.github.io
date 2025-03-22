@@ -28,28 +28,7 @@
         <p>Your IPv6 Address: <span id="ipv6">Loading...</span></p>
     </div>
 
-    <script>
-        // Fetch IPv4 address
-        fetch('https://api.ipify.org?format=json')
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('ipv4').textContent = data.ip;
-            })
-            .catch(error => {
-                console.error('Error fetching IPv4 address:', error);
-                document.getElementById('ipv4').textContent = 'Unable to fetch IPv4 address.';
-            });
-
-        // Fetch IPv6 address
-        fetch('https://api64.ipify.org?format=json')
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('ipv6').textContent = data.ip;
-            })
-            .catch(error => {
-                console.error('Error fetching IPv6 address:', error);
-                document.getElementById('ipv6').textContent = 'Unable to fetch IPv6 address.';
-            });
-    </script>
+    <!-- Updated script path -->
+    <script src="js/FetchInformation.js"></script>
 </body>
 </html>
