@@ -9,23 +9,46 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin-top: 50px;
+            background-color: #fff4db;
+        }
+        .ip-container {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #ffe4b5;
+            display: inline-block;
         }
     </style>
 </head>
 <body>
     <h1>Welcome to My Website</h1>
-    <p>Your IP address is: <span id="visitor-ip">Loading...</span></p>
+    <div class="ip-container">
+        <p>Your IPv4 Address: <span id="ipv4">Loading...</span></p>
+        <p>Your IPv6 Address: <span id="ipv6">Loading...</span></p>
+    </div>
 
     <script>
-        // Fetch the visitor's IP address using ipify API
+        // Fetch IPv4 address
         fetch('https://api.ipify.org?format=json')
             .then(response => response.json())
             .then(data => {
-                document.getElementById('visitor-ip').textContent = data.ip;
+                document.getElementById('ipv4').textContent = data.ip;
             })
             .catch(error => {
-                console.error('Error fetching IP address:', error);
-                document.getElementById('visitor-ip').textContent = 'Unable to fetch IP address.';
+                console.error('Error fetching IPv4 address:', error);
+                document.getElementById('ipv4').textContent = 'Unable to fetch IPv4 address.';
+            });
+
+        // Fetch IPv6 address
+        fetch('https://api64.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('ipv6').textContent = data.ip;
+            })
+            .catch(error => {
+                console.error('Error fetching IPv6 address:', error);
+                document.getElementById('ipv6').textContent = 'Unable to fetch IPv6 address.';
             });
     </script>
 </body>
