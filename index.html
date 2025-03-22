@@ -1,14 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>My Site</title>
-</head>
-<body>
-    <h1>Proxy/VPN Detection Test</h1>
-    <div id="result">Checking for proxies/VPNs...</div>
+<script>
+    async function checkProxy() {
+      try {
+        const API_URL = 'https://[your-vercel-domain]/api/detect-proxy';
+        const response = await fetch(API_URL);
+        const result = await response.json();
+        
+        const resultDiv = document.getElementById('result');
+        if (result.isProxy) {
+          resultDiv.textContent = "⚠️ VPN/Proxy detected!";
+        } else {
+          resultDiv.textContent = "✅ No VPN/Proxy detected";
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        resultDiv.textContent = "❌ Detection failed";
+      }
+    }
     
-    <script>
-    // We'll add detection code here later
+    // Run when page loads
+    window.addEventListener('load', checkProxy);
     </script>
-</body>
-</html>
