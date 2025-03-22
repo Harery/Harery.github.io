@@ -1,12 +1,12 @@
 // Function to fetch and display IP addresses and country
 function fetchAndDisplayInfo() {
     // Fetch IP and geolocation information
-    fetch('https://ipwhois.app/json/')
+    fetch('http://ip-api.com/json/')
         .then(response => response.json())
         .then(data => {
             // Display IPv4 or IPv6
-            document.getElementById('ipv4').textContent = data.ip;
-            document.getElementById('ipv6').textContent = data.ipv6 || 'IPv6 not available';
+            document.getElementById('ipv4').textContent = data.query || 'IP not available';
+            document.getElementById('ipv6').textContent = 'IPv6 not available'; // ip-api doesn't provide IPv6
 
             // Display country
             document.getElementById('country').textContent = data.country || 'Country not available';
