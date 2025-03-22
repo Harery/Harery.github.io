@@ -1,21 +1,21 @@
 // Function to fetch and display IP and geolocation information
 function fetchAndDisplayInfo() {
     // Fetch IP and geolocation information
-    fetch('http://ip-api.com/json/')
+    fetch('https://ipwhois.app/json/')
         .then(response => response.json())
         .then(data => {
             // Display IP addresses
-            document.getElementById('ipv4').textContent = data.query || 'IP not available';
-            document.getElementById('ipv6').textContent = 'IPv6 not available'; // ip-api doesn't provide IPv6
+            document.getElementById('ipv4').textContent = data.ip || 'IP not available';
+            document.getElementById('ipv6').textContent = data.ipv6 || 'IPv6 not available';
 
             // Display geolocation and ISP details
-            document.getElementById('region').textContent = data.regionName || 'Region not available';
+            document.getElementById('region').textContent = data.region || 'Region not available';
             document.getElementById('city').textContent = data.city || 'City not available';
-            document.getElementById('zip').textContent = data.zip || 'ZIP not available';
+            document.getElementById('zip').textContent = data.postal || 'ZIP not available';
             document.getElementById('timezone').textContent = data.timezone || 'Timezone not available';
             document.getElementById('isp').textContent = data.isp || 'ISP not available';
             document.getElementById('organization').textContent = data.org || 'Organization not available';
-            document.getElementById('asn').textContent = `${data.as} (${data.asname || 'AS name not available'})`;
+            document.getElementById('asn').textContent = `${data.asn || 'AS number not available'} (${data.as || 'AS name not available'})`;
 
             // Display user agent
             document.getElementById('user-agent').textContent = navigator.userAgent || 'User agent not available';
